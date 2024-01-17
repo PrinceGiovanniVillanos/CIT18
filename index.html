@@ -1,64 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prince Giovanni Villanos - Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+   
+  </style>
+  <title>Web Design Mastery | Responsive Portfolio</title>
 </head>
 <body>
-
-  <header>
-    <h1>Prince Giovanni Villanos</h1>
-    <p>Poblacion Balungso, Pangasinan</p>
-    <p>Email: pgvillanos@gmail.com</p>
-  </header>
-
-  <section class="container">
-    <div class="education">
-      <h2>Education</h2>
-      <p>Undergraduate - Bachelor of Science in Information Technology - Major in Web Technology</p>
-      <p>University of the Cordilleras, Governor Pack Road, Baguio City</p>
-      <p>Expected date of graduation: August 2024</p>
-
-      <p>Senior High School</p>
-      <p>University of Cordilleras - Science, Technology, Mathematics, and Engineering</p>
-      <p>Governor Pack Road, July 2020</p>
-
-      <p>Junior High School</p>
-      <p>Rosales Wesleyan Academy, Rosales Pangasinan, March 2018</p>
-
-      <p>Primary</p>
-      <p>Rosales Wesleyan Academy, Rosales Pangasinan, April 2016</p>
-    </div>
-
-    <div class="skills">
-      <h2>Skills and Qualifications</h2>
+  <nav>
+    <div class="nav__content">
+      <div class="logo"><a href="#">Prince</a></div>
+      <label for="check" class="checkbox">
+        <i class="ri-menu-line"></i>
+      </label>
+      <input type="checkbox" name="check" id="check" />
       <ul>
-        <li>Knowledgeable in programming / scripting language: HTML5, Java, SQL</li>
-        <li>Basic understanding of web technologies (client side, server side, and databases)</li>
-        <li>Well-informed in programming languages: Python, Java</li>
-        <li>Flexible individual and team player who functions well in a fast-paced work environment</li>
-        <li>Analytical thinker and good in problem-solving</li>
+        <li><a href="#" onclick="scrollToSection('home')">Home</a></li>
+        <li><a href="#" onclick="scrollToSection('about')">About</a></li>
+        <li><a href="#" onclick="redirectToResume()">Resume</a></li>
+        <li><a href="#" onclick="scrollToSection('portfolio')">Portfolio</a></li>
+        <li><a href="#" onclick="scrollToSection('contact')">Contact</a></li>
       </ul>
+    
+      <button id="darkModeToggle" onclick="toggleDarkMode()">
+        <i class="ri-moon-fill"></i> Dark Mode
+      </button>
     </div>
-
-    <div class="personal-info">
-      <h2>Personal Information</h2>
-      <p>Date of Birth: July 30, 2003</p>
-      <p>Place of Birth: Poblacion, Balungao Pangasinan</p>
-      <p>Age: 19 years old</p>
-      <p>Gender: Male</p>
-      <p>Civil Status: Single</p>
-      <p>Citizenship: Filipino</p>
-      <p>Father’s Name: Prince Giovanni O. Villanos</p>
-      <p>Mother’s Maiden Name: Maryjoice Villanos</p>
-      <p>Height: 5’8”</p>
-      <p>Weight: 58 kgs.</p>
-      <p>Language/Dialect: English, Filipino</p>
+  </nav>
+  <section id="home" class="section">
+    <div class="section__container">
+      <div class="content">
+        <p class="subtitle">HELLO</p>
+        <h1 class="title">
+          I'm <span>Prince<br />a</span> Web Developer
+        </h1>
+        <p class="description">
+          Welcome to my web developer portfolio! I'm Prince, a skilled and creative web developer with a passion for creating beautiful, responsive, and user-friendly websites. I've worked on a variety of web projects, ranging from personal blogs to e-commerce platforms.
+        </p>
+        <div class="action__btns">
+          <button class="hire__me" onclick="redirectToContact()">Hire Me</button>
+          <button class="portfolio" onclick="scrollToSection('portfolio')">Portfolio</button>
+        </div>
+      </div>
+      <div class="image">
+        <img src="https://scontent.fcrk1-4.fna.fbcdn.net/v/t39.30808-6/358601919_6300707403379773_6405803572613643916_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeFeO9jlghjxPXtgZOcrZfB9JTbuE71SBrwlNu4TvVIGvDahy1cfB2ufr7KMiUtTJIMTDfoIp8HmtoVzyQgsJOs_&_nc_ohc=x5CgBhmsPn4AX-EnVv3&_nc_ht=scontent.fcrk1-4.fna&oh=00_AfDEqwrGcsP2Rtzxzv78DKOOnJ8qqa7CvG74cffoOidJpQ&oe=65AC32BB" alt="profile" />
+      </div>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  
+
+  <script>
+  function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+  }
+
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function redirectToResume() {
+    window.open('http://192.168.100.8:5500/index.html', '_blank');
+  }
+
+  function redirectToContact() {
+    
+    scrollToSection('contact');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isDarkModeStored = localStorage.getItem('darkMode');
+    const body = document.body;
+
+    if (isDarkModeStored === 'true') {
+      body.classList.add('dark-mode');
+    }
+
+    const resumeLink = document.querySelector('a[href="#"][onclick="redirectToResume()"]');
+    resumeLink.addEventListener('click', redirectToResume);
+  });
+</script>
 </body>
 </html>
